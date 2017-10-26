@@ -96,75 +96,75 @@ class App extends Component {
 
     usingRoutes = () => {
         if (this.state.personalityTraits !== undefined && this.state.personalityTraits.length > 1) {
-            return <Redirect to = "/match" / >
+            return <Redirect to="/match" />
         } else if (this.state.personalityTraits === undefined) {
-            return <Redirect to = "/load" / >
+            return <Redirect to="/load" />
         } else if (this.state.personalityTraits.length < 1 && this.state.blogs.length > 1) {
-            return <Redirect to = "/blogs" / >
+            return <Redirect to="/blogs" />
         } else {
-            return <Redirect to = "/app" / >
+            return <Redirect to="/" />
         }
     }
 
     render() {
         // <Route path="/" component={Navbar}/>
-        return ( <
+        return (<
             div >
             <
-            Navbar fetchBlogs = { this.fetchBlogs }
-            /> { this.usingRoutes() } <
-            Route path = "/match"
-            render = {
-                () =>
-                //this is the fial one with matched dogs and human traits
-                <
-                div className = "App" >
-                <
-                HumanTraits person = { this.state.personalityTraits }
-                /> <
-                DogMatch dogs = { this.state.dogs }
-                leaveComment = { this.leaveComment }
-                /> < /
+                Navbar fetchBlogs={this.fetchBlogs}
+            /> {this.usingRoutes()} <
+                Route path="/match"
+                render={
+                    () =>
+                        //this is the fial one with matched dogs and human traits
+                        <
+                div className="App" >
+                            <
+                                HumanTraits person={this.state.personalityTraits}
+                            /> <
+                                DogMatch dogs={this.state.dogs}
+                                leaveComment={this.leaveComment}
+                            /> < /
                 div >
             }
             /> <
-            Route path = "/load"
-            render = {
-                () =>
-                //loading bar page
-                ( <
-                    div className = "App row" >
-                    <
-                    LoadingModal / >
-                    <
+                                Route path="/load"
+                                render={
+                                    () =>
+                                        //loading bar page
+                                        (<
+                    div className="App row" >
+                                            <
+                                                LoadingModal />
+                                            <
                     /div>
                 )
             }
             /> <
-            Route path = "/blogs"
-            render = {
-                () =>
-                //choose the blog you want to analyze
-                <
-                div className = "App" >
-                <
-                Segment > < Blog fetchAnalysis = { this.fetchAnalysis }
-                blogs = { this.state.blogs }
-                /></Segment >
-                <
+                                                Route path="/blogs"
+                                                render={
+                                                    () =>
+                                                        //choose the blog you want to analyze
+                                                        <
+                div className="App" >
+                                                            <
+                                                                Segment > < Blog fetchAnalysis={this.fetchAnalysis}
+                                                                    blogs={this.state.blogs}
+                                                                /></Segment >
+                                                            <
                 /div>
             }
             /> <
-            Route path = "/app"
-            render = {
-                () =>
-                //this is the first render, home screen
-                <
-                div className = "App" >
-                <
-                Segment > < Display fetchBlogs = { this.fetchBlogs }
-                /></Segment >
-                <
+                                                                Route path="/"
+                                                                render={
+                                                                    () =>
+                                                                        //this is the first render, home screen
+                                                                        <
+                div className="App" >
+                                                                            <
+                                                                                Segment > < Display fetchBlogs={this.fetchBlogs}
+                                                                                /></Segment >
+                                                                            <
                 /div>
             }
             /> < /
